@@ -18,7 +18,7 @@ public class Partie {
   public Resultat jouer(Opposants opposants) {
     affichage.nouvellePartie();
     var score = new Partie.Score(opposants);
-    Optional<Equipe> vainqueur;
+    Optional<Joueur> vainqueur;
     do {
       var resultat = new Manche(affichage).jouer(opposants);
       vainqueur = score.enregistrer(resultat);
@@ -31,16 +31,16 @@ public class Partie {
     private static final int NB_MANCHES_A_GAGNER = 3;
 
     private final List<Manche.Resultat> resultatManches = new ArrayList<>();
-    private final Map<Equipe, Integer> manchesGagneesParEquipe = new HashMap<>();
+    private final Map<Joueur, Integer> manchesGagneesParJoueur = new HashMap<>();
 
     public Score(Opposants opposants) {
-      this.manchesGagneesParEquipe.put(opposants.equipeEsku(), 0);
-      this.manchesGagneesParEquipe.put(opposants.equipeZaku(), 0);
+      this.manchesGagneesParJoueur.put(opposants.joueurEsku(), 0);
+      this.manchesGagneesParJoueur.put(opposants.joueurZaku(), 0);
     }
 
-    public Optional<Equipe> enregistrer(Manche.Resultat score) {
+    public Optional<Joueur> enregistrer(Manche.Resultat score) {
       resultatManches.add(score);
-      manchesGagneesParEquipe.put(score.vainqueur(), manchesGagneesParEquipe.get(score.vainqueur()) + 1);
+      manchesGagneesParJoueur.put(score.vainqueur(), manchesGagneesParJoueur.get(score.vainqueur()) + 1);
       return vainqueur();
     }
 
@@ -48,11 +48,9 @@ public class Partie {
       return resultatManches;
     }
 
-    // Renvoie une équipe ayant gagné 3 manches (rien sinon, d'où le Optional) en faisant
-    // une requête de filtrage sur la HashMap
-    public Optional<Equipe> vainqueur() {
-      return manchesGagneesParEquipe.keySet().stream()
-        .filter(equipe -> manchesGagneesParEquipe.get(equipe) == NB_MANCHES_A_GAGNER).findAny();
+    public Optional<Joueur> vainqueur() {
+      return manchesGagneesParJoueur.keySet().stream()
+              .filter(joueur -> manchesGagneesParJoueur.get(joueur) == NB_MANCHES_A_GAGNER).findAny();
     }
   }
 

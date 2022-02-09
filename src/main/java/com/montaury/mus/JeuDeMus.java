@@ -4,24 +4,36 @@ import com.montaury.mus.console.AffichageEvenements;
 import com.montaury.mus.jeu.Opposants;
 import com.montaury.mus.jeu.Partie;
 import com.montaury.mus.jeu.joueur.Joueur;
+import com.montaury.mus.jeu.joueur.Equipe;
 
 import java.util.Scanner;
 
 public class JeuDeMus {
   public static void main(String[] args) {
-    System.out.print("Entrez le nombre de joueur par equipe( 1 ou 2) :");
+    System.out.print("Entrez le nombre de joueur par equipe(1 ou 2) : ");
     var nombreJoueurParEquipe = new Scanner(System.in).nextInt();
     System.out.print("Entrez votre nom: ");
     var nomJoueur = new Scanner(System.in).next();
     var joueurHumain = Joueur.humain(nomJoueur);
 
 
-    Joueur tabEquipe1[nombreJoueurParEquipe] = {joueurHumain};
-    Joueur tabEquipe2[nombreJoueurParEquipe] = {Joueur.ordinateur()};
+    Joueur[] tabEquipe1 = new Joueur[nombreJoueurParEquipe];
+    tabEquipe1[0] = joueurHumain;
 
-    if (nombreJoueurParEquipe != 1) {
-      tabEquipe1[1] = Joueur.ordinateur();
-      tabEquipe2[1] = Joueur.ordinateur();
+    Joueur[] tabEquipe2 = new Joueur[nombreJoueurParEquipe];
+    tabEquipe2[0] = Joueur.ordinateur();
+
+    if(nombreJoueurParEquipe > 1)
+    {
+      for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
+      {
+        tabEquipe1[i] = Joueur.ordinateur();
+      }
+
+      for (var i = 0 ; i < nombreJoueurParEquipe ; i++)
+      {
+        tabEquipe2[i] = Joueur.ordinateur();
+      }
     }
 
     var equipe1 = new Equipe(tabEquipe1);

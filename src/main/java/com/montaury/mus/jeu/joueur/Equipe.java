@@ -7,7 +7,12 @@ public class Equipe {
 
     public Equipe(Joueur[] listeJoueurs) {
         this.listeJoueurs = listeJoueurs;
+
+        for(Joueur joueur : listeJoueurs)
+        {
+            joueur.setEquipe(this);
+        }
     }
 
-    public Joueur[] listeJoueurs() { return listeJoueurs(); }
+    public Joueur[] listeJoueurs() { return listeJoueurs; }
 }
