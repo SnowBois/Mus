@@ -12,6 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OpposantsTest {
     @BeforeEach
     void setUp() {
+    }
+
+
+    @Test
+    void doit_donner_la_priorite_au_prochain_joueur_et_esku_devient_zaku() {
         var joueur1 = Joueur.ordinateur();
         var joueur2 = Joueur.ordinateur();
         var joueur3 = Joueur.ordinateur();
@@ -21,16 +26,14 @@ public class OpposantsTest {
         var equipe2 = new Equipe(new Joueur[]{joueur3, joueur4});
 
         var opposants = new Opposants(equipe1, equipe2);
-    }
 
-
-    @Test
-    void doit_donner_la_priorite_au_prochain_joueur_et_esku_devient_zaku() {
         var ancienEsku = opposants.dansLOrdre().get(0);
 
         opposants.tourner();
 
-        assertThat(opposants.dansLOrdre().get(opposants.dansLOrdre().size() - 1) == ancienEsku);
+        var actuelZaku = opposants.dansLOrdre().get(opposants.dansLOrdre().size() - 1);
+
+        assertThat(actuelZaku == ancienEsku);
     }
 
     private Opposants opposants;

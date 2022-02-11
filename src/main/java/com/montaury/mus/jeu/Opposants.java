@@ -16,7 +16,7 @@ public class Opposants {
     this.equipe1 = equipe1;
     this.equipe2 = equipe2;
 
-    ordreDePassage = new Joueur[equipe1.listeJoueurs().length * 2];
+    ordreDePassage = new Joueur[equipe1.listeJoueurs().length + equipe2.listeJoueurs().length];
 
     var j = 0;
     for (var i = 0 ; i < equipe1.listeJoueurs().length ; i++)

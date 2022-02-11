@@ -1,6 +1,8 @@
 package com.montaury.mus.jeu;
 
 import com.montaury.mus.jeu.evenements.Evenements;
+import com.montaury.mus.jeu.joueur.Joueur;
+import com.montaury.mus.jeu.joueur.Equipe;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Gehiago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Hordago;
 import com.montaury.mus.jeu.tour.phases.dialogue.choix.Imido;
@@ -26,7 +28,16 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
+    Joueur[] tabEquipe1 = new Joueur[1];
+    tabEquipe1[0] = joueurEsku;
+
+    Joueur[] tabEquipe2 = new Joueur[1];
+    tabEquipe2[0] = joueurEsku;
+
+    Equipe equipe1 = new Equipe(tabEquipe1);
+    Equipe equipe2 = new Equipe(tabEquipe2);
+
+    var resultat = manche.jouer(new Opposants(equipe1, equipe2));
 
     assertThat(resultat.vainqueur()).isNotNull();
     assertThat(resultat.pointsVaincu()).isZero();
@@ -37,7 +48,16 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Gehiago(2));
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(40), new Tira());
 
-    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
+    Joueur[] tabEquipe1 = new Joueur[1];
+    tabEquipe1[0] = joueurEsku;
+
+    Joueur[] tabEquipe2 = new Joueur[1];
+    tabEquipe2[0] = joueurEsku;
+
+    Equipe equipe1 = new Equipe(tabEquipe1);
+    Equipe equipe2 = new Equipe(tabEquipe2);
+
+    var resultat = manche.jouer(new Opposants(equipe1, equipe2));
 
     assertThat(resultat.vainqueur()).isEqualTo(joueurEsku);
     assertThat(resultat.pointsVaincu()).isZero();
@@ -47,7 +67,17 @@ class MancheTest {
   void devrait_changer_l_ordre_des_opposants_a_la_fin_du_tour() {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
-    var opposants = new Opposants(joueurEsku, joueurZaku);
+
+    Joueur[] tabEquipe1 = new Joueur[1];
+    tabEquipe1[0] = joueurEsku;
+
+    Joueur[] tabEquipe2 = new Joueur[1];
+    tabEquipe2[0] = joueurEsku;
+
+    Equipe equipe1 = new Equipe(tabEquipe1);
+    Equipe equipe2 = new Equipe(tabEquipe2);
+
+    var opposants = new Opposants(equipe1, equipe2);
 
     manche.jouer(opposants);
 
