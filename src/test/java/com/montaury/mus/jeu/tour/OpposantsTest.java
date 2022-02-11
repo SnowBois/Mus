@@ -17,7 +17,7 @@ public class OpposantsTest {
 
     @Test
     void doit_donner_la_priorite_au_prochain_joueur_et_esku_devient_zaku() {
-        var joueur1 = Joueur.ordinateur();
+        var joueur1 = Joueur.humain("Sophie");
         var joueur2 = Joueur.ordinateur();
         var joueur3 = Joueur.ordinateur();
         var joueur4 = Joueur.ordinateur();
@@ -29,7 +29,17 @@ public class OpposantsTest {
 
         var ancienEsku = opposants.dansLOrdre().get(0);
 
+        for (Joueur joueur : opposants.dansLOrdre())
+        {
+            System.out.println(joueur.nom());
+        }
+
         opposants.tourner();
+
+        for (Joueur joueur : opposants.dansLOrdre())
+        {
+            System.out.println(joueur.nom());
+        };
 
         var actuelZaku = opposants.dansLOrdre().get(opposants.dansLOrdre().size() - 1);
 

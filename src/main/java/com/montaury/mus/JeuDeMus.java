@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class JeuDeMus {
   public static void main(String[] args) {
-    System.out.print("Entrez le nombre de joueur par equipe(1 ou 2) : ");
+    System.out.print("Entrez le nombre de joueur par equipe (1 ou 2) : ");
     var nombreJoueurParEquipe = new Scanner(System.in).nextInt();
     System.out.print("Entrez votre nom: ");
     var nomJoueur = new Scanner(System.in).next();

@@ -4,43 +4,35 @@ import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.joueur.Equipe;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Deque;
 
 public class Opposants {
   private Equipe equipe1;
   private Equipe equipe2;
   private Joueur joueurEsku;
   private Joueur joueurZaku;
-  private Joueur[] ordreDePassage;
+  private Deque<Joueur> ordreDePassage;
 
   public Opposants(Equipe equipe1, Equipe equipe2) {
     this.equipe1 = equipe1;
     this.equipe2 = equipe2;
 
-    ordreDePassage = new Joueur[equipe1.listeJoueurs().length + equipe2.listeJoueurs().length];
-
-    var j = 0;
     for (var i = 0 ; i < equipe1.listeJoueurs().length ; i++)
     {
-      ordreDePassage[j] = equipe1.listeJoueurs()[i];
-      j++;
-      ordreDePassage[j] = equipe2.listeJoueurs()[i];
-      j++;
+      this.ordreDePassage.add(this.equipe1.listeJoueurs()[i]);
+      this.ordreDePassage.add(this.equipe2.listeJoueurs()[i]);
     }
 
-    this.joueurEsku = ordreDePassage[0];
-    this.joueurZaku = ordreDePassage[ordreDePassage.length - 1];
+    this.joueurEsku = this.ordreDePassage.getFirst();
+    this.joueurZaku = this.ordreDePassage.getLast();
   }
 
   public void tourner() {
-    var copieOrdreDePassage = ordreDePassage;
+    var ancienEsku = this.ordreDePassage.pollFirst();
+    this.ordreDePassage.add(ancienEsku);
 
-    for (var i = 0 ; i < ordreDePassage.length ; i++)
-    {
-      ordreDePassage[(i+1) % ordreDePassage.length] = copieOrdreDePassage[i];
-    }
-
-    this.joueurEsku = ordreDePassage[0];
-    this.joueurZaku = ordreDePassage[ordreDePassage.length - 1];
+    this.joueurEsku = this.ordreDePassage.getFirst();
+    this.joueurZaku = this.ordreDePassage.getLast();
   }
 
   public Joueur joueurEsku() {
