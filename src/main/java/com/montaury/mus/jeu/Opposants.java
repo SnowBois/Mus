@@ -96,4 +96,14 @@ public class Opposants {
 
     return equipe2DansLOrdre;
   }
+
+  public boolean estEsku(Joueur joueur)
+  {
+    return this.ordreDePassage.getFirst() == joueur;
+  }
+
+  public boolean estZaku(Joueur joueur)
+  {
+    return this.ordreDePassage.getLast() == joueur;
+  }
 }

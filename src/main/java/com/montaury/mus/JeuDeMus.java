@@ -18,28 +18,25 @@ public class JeuDeMus {
     var nomJoueur = new Scanner(System.in).next();
     var joueurHumain = Joueur.humain(nomJoueur);
 
+    var equipe1 = new Equipe();
+    var equipe2 = new Equipe();
 
-    List<Joueur> listeJoueursEquipe1 = new ArrayList<>();
-    listeJoueursEquipe1.add(joueurHumain);
+    equipe1.ajouterJoueur(joueurHumain);
 
-    List<Joueur> listeJoueursEquipe2 = new ArrayList<>();
-    listeJoueursEquipe2.add(Joueur.ordinateur());
+    equipe2.ajouterJoueur(Joueur.ordinateur("Equipe2-Ordinateur0"));
 
     if(nombreJoueurParEquipe > 1)
     {
       for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
       {
-        listeJoueursEquipe1.add(Joueur.ordinateur());
+        equipe1.ajouterJoueur(Joueur.ordinateur("Equipe1-Ordinateur" + String.valueOf(i)));
       }
 
-      for (var i = 0 ; i < nombreJoueurParEquipe ; i++)
+      for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
       {
-        listeJoueursEquipe2.add(Joueur.ordinateur());
+        equipe2.ajouterJoueur(Joueur.ordinateur("Equipe2-Ordinateur" + String.valueOf(i)));
       }
     }
-
-    var equipe1 = new Equipe(listeJoueursEquipe1);
-    var equipe2= new Equipe(listeJoueursEquipe2);
 
     var partie = new Partie(new AffichageEvenements(joueurHumain));
     var resultat = partie.jouer(new Opposants(equipe1,equipe2));
