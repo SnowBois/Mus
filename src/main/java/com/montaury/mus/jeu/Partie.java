@@ -34,9 +34,9 @@ public class Partie {
     private final Map<Joueur, Integer> manchesGagneesParJoueur = new HashMap<>();
 
     public Score(Opposants opposants) {
-      for (var i = 0 ; i < opposants.dansLOrdre().size() ; i++)
+      for (var i = 0; i < opposants.tousJoueursDansLOrdre().size() ; i++)
       {
-        this.manchesGagneesParJoueur.put(opposants.dansLOrdre().get(i), 0);
+        this.manchesGagneesParJoueur.put(opposants.tousJoueursDansLOrdre().get(i), 0);
       }
     }
 

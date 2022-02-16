@@ -6,6 +6,9 @@ import com.montaury.mus.jeu.joueur.Joueur;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -22,26 +25,16 @@ public class OpposantsTest {
         var joueur3 = Joueur.ordinateur();
         var joueur4 = Joueur.ordinateur();
 
-        var equipe1 = new Equipe(new Joueur[]{joueur1, joueur2});
-        var equipe2 = new Equipe(new Joueur[]{joueur3, joueur4});
+        var equipe1 = new Equipe();
+        var equipe2 = new Equipe();
 
         var opposants = new Opposants(equipe1, equipe2);
 
-        var ancienEsku = opposants.dansLOrdre().get(0);
-
-        for (Joueur joueur : opposants.dansLOrdre())
-        {
-            System.out.println(joueur.nom());
-        }
+        var ancienEsku = opposants.tousJoueursDansLOrdre().get(0);
 
         opposants.tourner();
 
-        for (Joueur joueur : opposants.dansLOrdre())
-        {
-            System.out.println(joueur.nom());
-        };
-
-        var actuelZaku = opposants.dansLOrdre().get(opposants.dansLOrdre().size() - 1);
+        var actuelZaku = opposants.tousJoueursDansLOrdre().get(opposants.tousJoueursDansLOrdre().size() - 1);
 
         assertThat(actuelZaku == ancienEsku);
     }

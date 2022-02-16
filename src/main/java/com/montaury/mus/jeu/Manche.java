@@ -31,9 +31,9 @@ public class Manche {
     private final Map<Joueur, Integer> scoreParJoueur = new HashMap<>();
 
     public Score(Opposants opposants) {
-      for (var i = 0 ; i < opposants.dansLOrdre().size() ; i++)
+      for (var i = 0; i < opposants.tousJoueursDansLOrdre().size() ; i++)
       {
-        scoreParJoueur.put(opposants.dansLOrdre().get(i), 0);
+        scoreParJoueur.put(opposants.tousJoueursDansLOrdre().get(i), 0);
       }
     }
 

@@ -52,7 +52,7 @@ public abstract class Phase {
   }
 
   public Participants participantsParmi(Opposants opposants) {
-    return new Participants(opposants.dansLOrdre().stream()
+    return new Participants(opposants.tousJoueursDansLOrdre().stream()
       .filter(joueur -> peutParticiper(joueur.main()))
       .collect(Collectors.toList()));
   }

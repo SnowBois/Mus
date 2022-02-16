@@ -12,16 +12,23 @@ public class Opposants {
   private Joueur joueurZaku;
   private ArrayDeque<Joueur> ordreDePassage;
 
+  public Opposants(Joueur joueurEsku, Joueur joueurZaku) {
+    this.joueurEsku = joueurEsku;
+    this.joueurZaku = joueurZaku;
+
+    this.equipe1.ajouterJoueur(joueurEsku);
+    this.equipe2.ajouterJoueur(joueurZaku);
+  }
+
   public Opposants(Equipe equipe1, Equipe equipe2) {
     this.equipe1 = equipe1;
     this.equipe2 = equipe2;
 
     this.ordreDePassage = new ArrayDeque<Joueur>();
 
-    for (var i = 0 ; i < equipe1.listeJoueurs().length ; i++)
-    {
-      this.ordreDePassage.add(this.equipe1.listeJoueurs()[i]);
-      this.ordreDePassage.add(this.equipe2.listeJoueurs()[i]);
+    for (var i = 0; i < equipe1.listeJoueurs().size() ; i++) {
+      this.ordreDePassage.add(this.equipe1.recupererJoueur(i));
+      this.ordreDePassage.add(this.equipe2.recupererJoueur(i));
     }
 
     this.joueurEsku = this.ordreDePassage.getFirst();
@@ -37,14 +44,40 @@ public class Opposants {
   }
 
   public Joueur joueurEsku() {
-    return joueurEsku;
+    return this.joueurEsku;
   }
 
   public Joueur joueurZaku() {
-    return joueurZaku;
+    return this.joueurZaku;
   }
 
-  public List<Joueur> dansLOrdre() {
-    return new ArrayList(ordreDePassage);
+  public List<Joueur> tousJoueursDansLOrdre() {
+    return new ArrayList(this.ordreDePassage);
+  }
+
+  public List<Joueur> equipe1DansLOrdre() {
+    List<Joueur> equipe1DansLOrdre = new ArrayList();
+
+    for (Joueur joueur : this.ordreDePassage) {
+      if(joueur.equipe() == this.equipe1)
+      {
+        equipe1DansLOrdre.add(joueur);
+      }
+    }
+
+    return equipe1DansLOrdre;
+  }
+
+  public List<Joueur> equipe2DansLOrdre() {
+    List<Joueur> equipe2DansLOrdre = new ArrayList();
+
+    for (Joueur joueur : this.ordreDePassage) {
+      if(joueur.equipe() == this.equipe2)
+      {
+        equipe2DansLOrdre.add(joueur);
+      }
+    }
+
+    return equipe2DansLOrdre;
   }
 }

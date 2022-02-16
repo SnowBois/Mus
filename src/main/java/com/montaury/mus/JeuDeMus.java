@@ -6,6 +6,8 @@ import com.montaury.mus.jeu.Partie;
 import com.montaury.mus.jeu.joueur.Joueur;
 import com.montaury.mus.jeu.joueur.Equipe;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class JeuDeMus {
@@ -17,27 +19,27 @@ public class JeuDeMus {
     var joueurHumain = Joueur.humain(nomJoueur);
 
 
-    Joueur[] tabEquipe1 = new Joueur[nombreJoueurParEquipe];
-    tabEquipe1[0] = joueurHumain;
+    List<Joueur> listeJoueursEquipe1 = new ArrayList<>();
+    listeJoueursEquipe1.add(joueurHumain);
 
-    Joueur[] tabEquipe2 = new Joueur[nombreJoueurParEquipe];
-    tabEquipe2[0] = Joueur.ordinateur();
+    List<Joueur> listeJoueursEquipe2 = new ArrayList<>();
+    listeJoueursEquipe2.add(Joueur.ordinateur());
 
     if(nombreJoueurParEquipe > 1)
     {
       for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
       {
-        tabEquipe1[i] = Joueur.ordinateur();
+        listeJoueursEquipe1.add(Joueur.ordinateur());
       }
 
       for (var i = 0 ; i < nombreJoueurParEquipe ; i++)
       {
-        tabEquipe2[i] = Joueur.ordinateur();
+        listeJoueursEquipe2.add(Joueur.ordinateur());
       }
     }
 
-    var equipe1 = new Equipe(tabEquipe1);
-    var equipe2= new Equipe(tabEquipe2);
+    var equipe1 = new Equipe(listeJoueursEquipe1);
+    var equipe2= new Equipe(listeJoueursEquipe2);
 
     var partie = new Partie(new AffichageEvenements(joueurHumain));
     var resultat = partie.jouer(new Opposants(equipe1,equipe2));
