@@ -27,16 +27,7 @@ class PartieTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago(), new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta(), new Mus(), new Paso(), new Kanta(), new Kanta(), new Mus(), new Paso(), new Kanta(), new Kanta());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     Partie.Resultat resultat = partie.jouer(opposants);
 

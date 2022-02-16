@@ -37,16 +37,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Tira());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 
@@ -62,16 +53,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Paso(), new Paso(), new Paso(), new Paso());
     var joueurZaku = unJoueurFaisantChoix(new Paso());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 
@@ -87,16 +69,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 
@@ -112,16 +85,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Idoki());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 
@@ -137,16 +101,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Idoki(), new Imido(), new Idoki(), new Imido(), new Idoki(), new Imido(), new Idoki());
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(2));
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 
@@ -162,16 +117,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Idoki());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 
@@ -189,16 +135,7 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Paso(), new Paso());
     var joueurZaku = unJoueurFaisantChoix(new Paso(), new Paso());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     var score = new Manche.Score(opposants);
 

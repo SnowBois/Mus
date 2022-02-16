@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,8 +26,16 @@ public class OpposantsTest {
         var joueur3 = Joueur.ordinateur();
         var joueur4 = Joueur.ordinateur();
 
-        var equipe1 = new Equipe();
-        var equipe2 = new Equipe();
+        List<Joueur> listeJoueursEquipe1 = new ArrayList<>();
+        listeJoueursEquipe1.add(joueur1);
+        listeJoueursEquipe1.add(joueur2);
+
+        List<Joueur> listeJoueursEquipe2 = new ArrayList<>();
+        listeJoueursEquipe2.add(joueur3);
+        listeJoueursEquipe2.add(joueur4);
+
+        var equipe1 = new Equipe(listeJoueursEquipe1);
+        var equipe2 = new Equipe(listeJoueursEquipe2);
 
         var opposants = new Opposants(equipe1, equipe2);
 

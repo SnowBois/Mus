@@ -12,6 +12,9 @@ import com.montaury.mus.jeu.tour.phases.dialogue.choix.Tira;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.montaury.mus.jeu.joueur.Fixtures.unJoueurFaisantChoix;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -28,16 +31,7 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var resultat = manche.jouer(new Opposants(equipe1, equipe2));
+    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
 
     assertThat(resultat.vainqueur()).isNotNull();
     assertThat(resultat.pointsVaincu()).isZero();
@@ -48,16 +42,7 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Gehiago(2));
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(40), new Tira());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var resultat = manche.jouer(new Opposants(equipe1, equipe2));
+    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
 
     assertThat(resultat.vainqueur()).isEqualTo(joueurEsku);
     assertThat(resultat.pointsVaincu()).isZero();
@@ -68,16 +53,7 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    var opposants = new Opposants(equipe1, equipe2);
+    var opposants = new Opposants(joueurEsku, joueurZaku);
 
     manche.jouer(opposants);
 

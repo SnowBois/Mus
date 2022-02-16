@@ -31,16 +31,7 @@ class MusTest {
     joueurEsku = new Joueur("J1", interfaceJoueurEsku);
     joueurZaku = new Joueur("J2", interfaceJoueurZaku);
 
-    Joueur[] tabEquipe1 = new Joueur[1];
-    tabEquipe1[0] = joueurEsku;
-
-    Joueur[] tabEquipe2 = new Joueur[1];
-    tabEquipe2[0] = joueurEsku;
-
-    Equipe equipe1 = new Equipe(tabEquipe1);
-    Equipe equipe2 = new Equipe(tabEquipe2);
-
-    opposants = new Opposants(equipe1, equipe2);
+    opposants = new Opposants(joueurEsku, joueurZaku);
   }
 
   @Test
