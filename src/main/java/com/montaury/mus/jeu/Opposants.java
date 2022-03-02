@@ -19,8 +19,8 @@ public class Opposants {
     List<Joueur> listeJoueursEquipe1 = new ArrayList<>();
     List<Joueur> listeJoueursEquipe2 = new ArrayList<>();
 
-    this.equipe1 = new Equipe(listeJoueursEquipe1);
-    this.equipe2 = new Equipe(listeJoueursEquipe2);
+    this.equipe1 = new Equipe("Equipe 1", listeJoueursEquipe1);
+    this.equipe2 = new Equipe("Equipe 2", listeJoueursEquipe2);
 
     this.equipe1.ajouterJoueur(joueurEsku);
     this.joueurEsku.setEquipe(equipe1);

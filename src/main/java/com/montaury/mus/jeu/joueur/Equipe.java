@@ -7,12 +7,20 @@ import java.util.List;
 
 public class Equipe {
     private final List<Joueur> listeJoueurs;
+    private final String nom;
 
     public Equipe() {
+        this.nom = "Equipe";
         this.listeJoueurs = new ArrayList<Joueur>();
     }
 
-    public Equipe(List<Joueur> listeJoueurs) {
+    public Equipe(String nom) {
+        this.nom = nom;
+        this.listeJoueurs = new ArrayList<Joueur>();
+    }
+
+    public Equipe(String nom, List<Joueur> listeJoueurs) {
+        this.nom = nom;
         this.listeJoueurs = listeJoueurs;
 
         for(Joueur joueur : listeJoueurs)
@@ -36,4 +44,8 @@ public class Equipe {
     }
 
     public List<Joueur> listeJoueurs() { return listeJoueurs; }
+
+    public String nom() {
+        return nom;
+    }
 }

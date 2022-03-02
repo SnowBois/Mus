@@ -14,27 +14,33 @@ public class JeuDeMus {
   public static void main(String[] args) {
     System.out.print("Entrez le nombre de joueur par equipe (1 ou 2) : ");
     var nombreJoueurParEquipe = new Scanner(System.in).nextInt();
-    System.out.print("Entrez votre nom: ");
+    System.out.print("Entrez votre nom : ");
     var nomJoueur = new Scanner(System.in).next();
+
+    System.out.print("Entrez votre nom d'équipe : ");
+    var nomEquipe1 = new Scanner(System.in).next();
+    nomJoueur = nomEquipe1 + "-" + nomJoueur;
     var joueurHumain = Joueur.humain(nomJoueur);
 
-    var equipe1 = new Equipe();
-    var equipe2 = new Equipe();
+    var nomEquipe2 = "Technodroïdes";
+
+    var equipe1 = new Equipe(nomEquipe1);
+    var equipe2 = new Equipe(nomEquipe2);
 
     equipe1.ajouterJoueur(joueurHumain);
 
-    equipe2.ajouterJoueur(Joueur.ordinateur("Equipe2-Ordinateur0"));
+    equipe2.ajouterJoueur(Joueur.ordinateur(nomEquipe2 + "-Ordinateur1"));
 
     if(nombreJoueurParEquipe > 1)
     {
       for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
       {
-        equipe1.ajouterJoueur(Joueur.ordinateur("Equipe1-Ordinateur" + String.valueOf(i)));
+        equipe1.ajouterJoueur(Joueur.ordinateur(nomEquipe1 + "-Ordinateur" + String.valueOf(i+1)));
       }
 
       for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
       {
-        equipe2.ajouterJoueur(Joueur.ordinateur("Equipe2-Ordinateur" + String.valueOf(i)));
+        equipe2.ajouterJoueur(Joueur.ordinateur(nomEquipe2 + "-Ordinateur" + String.valueOf(i+1)));
       }
     }
 

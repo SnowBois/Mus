@@ -29,7 +29,16 @@ public class AffichageEvenements implements Evenements {
   @Override
   public void mancheTerminee(Partie.Score score) {
     afficher("Manche terminée");
+    afficher("Historique des manches :");
     score.resultatManches().forEach(manche -> afficher("Vainqueur : " + manche.vainqueur().nom() + ", score du perdant : " + manche.pointsVaincu()));
+
+    for(var equipeManchesGagnees : score.manchesGagneesParEquipe().entrySet())
+    {
+      var equipe = equipeManchesGagnees.getKey();
+      var nbManchesGagnees = equipeManchesGagnees.getValue();
+
+      afficher("Nombre de manches gagnées par " + equipe.nom() + " : " + nbManchesGagnees);
+    }
   }
 
   @Override
@@ -41,7 +50,7 @@ public class AffichageEvenements implements Evenements {
   public void tourTermine(Opposants opposants, Manche.Score score) {
     afficher("Tour terminé");
     opposants.tousJoueursDansLOrdre().forEach(this::afficherMain);
-    score.scoreParJoueur().forEach((key, value) -> afficher("Score " + key.nom() + ": " + value));
+    score.scoreParEquipe().forEach((key, value) -> afficher("Score " + key.nom() + ": " + value));
     sautLigne();
   }
 

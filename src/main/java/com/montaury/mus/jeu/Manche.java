@@ -2,6 +2,7 @@ package com.montaury.mus.jeu;
 
 import com.montaury.mus.jeu.evenements.Evenements;
 import com.montaury.mus.jeu.joueur.Joueur;
+import com.montaury.mus.jeu.joueur.Equipe;
 import com.montaury.mus.jeu.tour.Tour;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,46 +29,44 @@ public class Manche {
   public static class Score {
     public static final int POINTS_POUR_TERMINER_MANCHE = 40;
 
-    private final Map<Joueur, Integer> scoreParJoueur = new HashMap<>();
+    private final Map<Equipe, Integer> scoreParEquipe = new HashMap<>();
 
     public Score(Opposants opposants) {
-      for (var i = 0; i < opposants.tousJoueursDansLOrdre().size() ; i++)
+      for (var i = 0; i < opposants.toutesEquipes().size() ; i++)
       {
-        scoreParJoueur.put(opposants.tousJoueursDansLOrdre().get(i), 0);
+        scoreParEquipe.put(opposants.toutesEquipes().get(i), 0);
       }
     }
 
-    public Map<Joueur, Integer> scoreParJoueur() {
-      return scoreParJoueur;
-    }
+    public Map<Equipe, Integer> scoreParEquipe() { return scoreParEquipe; }
 
     public void scorer(Joueur joueur, int points) {
       if (vainqueur().isEmpty()) {
-        scoreParJoueur.put(joueur, Math.min(scoreParJoueur.get(joueur) + points, POINTS_POUR_TERMINER_MANCHE));
+        scoreParEquipe.put(joueur.equipe(), Math.min(scoreParEquipe.get(joueur.equipe()) + points, POINTS_POUR_TERMINER_MANCHE));
       }
     }
 
-    public Optional<Joueur> vainqueur() {
-      return scoreParJoueur.keySet().stream().filter(joueur -> scoreParJoueur.get(joueur) == POINTS_POUR_TERMINER_MANCHE).findAny();
+    public Optional<Equipe> vainqueur() {
+      return scoreParEquipe.keySet().stream().filter(equipe -> scoreParEquipe.get(equipe) == POINTS_POUR_TERMINER_MANCHE).findAny();
     }
 
     public Optional<Integer> pointsVaincu() {
       return vainqueur().isEmpty() ?
         Optional.empty() :
-        scoreParJoueur.values().stream().filter(points -> points < POINTS_POUR_TERMINER_MANCHE).findAny();
+        scoreParEquipe.values().stream().filter(points -> points < POINTS_POUR_TERMINER_MANCHE).findAny();
     }
   }
 
   public static class Resultat {
-    private final Joueur vainqueur;
+    private final Equipe vainqueur;
     private final int pointsVaincu;
 
-    public Resultat(Joueur joueur, int pointsVaincu) {
-      vainqueur = joueur;
+    public Resultat(Equipe equipe, int pointsVaincu) {
+      vainqueur = equipe;
       this.pointsVaincu = pointsVaincu;
     }
 
-    public Joueur vainqueur() {
+    public Equipe vainqueur() {
       return vainqueur;
     }
 
