@@ -97,6 +97,10 @@ public class Opposants {
     return equipe2DansLOrdre;
   }
 
+  public List<Equipe> toutesEquipes() {
+    return List.of(equipe1, equipe2);
+  }
+
   public boolean estEsku(Joueur joueur)
   {
     return this.ordreDePassage.getFirst() == joueur;
