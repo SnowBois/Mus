@@ -93,7 +93,7 @@ class TourTest {
 
     tour.jouer(opposants, score);
 
-    assertThat(score.vainqueur()).contains(equipe1);
+    assertThat(score.vainqueur()).contains(equipe2);
     assertThat(score.scoreParEquipe()).containsEntry(equipe1, 0);
     assertThat(score.scoreParEquipe()).containsEntry(equipe2, 40);
   }
@@ -125,15 +125,21 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Idoki(), new Imido(), new Idoki(), new Imido(), new Idoki(), new Imido(), new Idoki());
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(2));
 
-    var opposants = new Opposants(joueurEsku, joueurZaku);
+    var equipe1 = new Equipe();
+    var equipe2 = new Equipe();
+
+    equipe1.ajouterJoueur(joueurEsku);
+    equipe2.ajouterJoueur(joueurZaku);
+
+    var opposants = new Opposants(equipe1, equipe2);
 
     var score = new Manche.Score(opposants);
 
     tour.jouer(opposants, score);
 
     assertThat(score.vainqueur()).isEmpty();
-    assertThat(score.scoreParJoueur()).containsEntry(joueurEsku, 4);
-    assertThat(score.scoreParJoueur()).containsEntry(joueurZaku, 16);
+    assertThat(score.scoreParEquipe()).containsEntry(equipe1, 4);
+    assertThat(score.scoreParEquipe()).containsEntry(equipe2, 16);
   }
 
   @Test
@@ -141,7 +147,13 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Imido(), new Imido(), new Imido());
     var joueurZaku = unJoueurFaisantChoix(new Idoki());
 
-    var opposants = new Opposants(joueurEsku, joueurZaku);
+    var equipe1 = new Equipe();
+    var equipe2 = new Equipe();
+
+    equipe1.ajouterJoueur(joueurEsku);
+    equipe2.ajouterJoueur(joueurZaku);
+
+    var opposants = new Opposants(equipe1, equipe2);
 
     var score = new Manche.Score(opposants);
 
@@ -150,8 +162,8 @@ class TourTest {
     tour.jouer(opposants, score);
 
     assertThat(score.vainqueur()).isEmpty();
-    assertThat(score.scoreParJoueur()).containsEntry(joueurEsku, 7);
-    assertThat(score.scoreParJoueur()).containsEntry(joueurZaku, 0);
+    assertThat(score.scoreParEquipe()).containsEntry(equipe1, 7);
+    assertThat(score.scoreParEquipe()).containsEntry(equipe2, 0);
   }
 
   @Test
@@ -159,7 +171,13 @@ class TourTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Paso(), new Paso());
     var joueurZaku = unJoueurFaisantChoix(new Paso(), new Paso());
 
-    var opposants = new Opposants(joueurEsku, joueurZaku);
+    var equipe1 = new Equipe();
+    var equipe2 = new Equipe();
+
+    equipe1.ajouterJoueur(joueurEsku);
+    equipe2.ajouterJoueur(joueurZaku);
+
+    var opposants = new Opposants(equipe1, equipe2);
 
     var score = new Manche.Score(opposants);
 
@@ -168,8 +186,8 @@ class TourTest {
     tour.jouer(opposants, score);
 
     assertThat(score.vainqueur()).isEmpty();
-    assertThat(score.scoreParJoueur()).containsEntry(joueurEsku, 6);
-    assertThat(score.scoreParJoueur()).containsEntry(joueurZaku, 0);
+    assertThat(score.scoreParEquipe()).containsEntry(equipe1, 6);
+    assertThat(score.scoreParEquipe()).containsEntry(equipe2, 0);
   }
 
   private Evenements evenementsDeJeu;

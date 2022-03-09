@@ -15,10 +15,10 @@ public class JeuDeMus {
     System.out.print("Entrez le nombre de joueur par equipe (1 ou 2) : ");
     var nombreJoueurParEquipe = new Scanner(System.in).nextInt();
     System.out.print("Entrez votre nom : ");
-    var nomJoueur = new Scanner(System.in).next();
+    var nomJoueur = new Scanner(System.in).nextLine();
 
     System.out.print("Entrez votre nom d'équipe : ");
-    var nomEquipe1 = new Scanner(System.in).next();
+    var nomEquipe1 = new Scanner(System.in).nextLine();
     nomJoueur = nomEquipe1 + "-" + nomJoueur;
     var joueurHumain = Joueur.humain(nomJoueur);
 
