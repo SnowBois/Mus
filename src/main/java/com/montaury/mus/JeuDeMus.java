@@ -19,6 +19,8 @@ public class JeuDeMus {
 
     System.out.print("Entrez votre nom d'équipe : ");
     var nomEquipe1 = new Scanner(System.in).nextLine();
+
+    // On préfixe le nom choisi pour le joueur par le nom de son équipe suivi d'un tirer
     nomJoueur = nomEquipe1 + "-" + nomJoueur;
     var joueurHumain = Joueur.humain(nomJoueur);
 
@@ -28,20 +30,13 @@ public class JeuDeMus {
     var equipe2 = new Equipe(nomEquipe2);
 
     equipe1.ajouterJoueur(joueurHumain);
-
     equipe2.ajouterJoueur(Joueur.ordinateur(nomEquipe2 + "-Ordinateur1"));
 
-    if(nombreJoueurParEquipe > 1)
+    // Si le mode de jeu choisi n'est pas le 1v1, on remplit les équipes avec plus d'ordinateurs
+    if(nombreJoueurParEquipe == 2)
     {
-      for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
-      {
-        equipe1.ajouterJoueur(Joueur.ordinateur(nomEquipe1 + "-Ordinateur" + String.valueOf(i+1)));
-      }
-
-      for (var i = 1 ; i < nombreJoueurParEquipe ; i++)
-      {
-        equipe2.ajouterJoueur(Joueur.ordinateur(nomEquipe2 + "-Ordinateur" + String.valueOf(i+1)));
-      }
+      equipe1.ajouterJoueur(Joueur.ordinateur(nomEquipe1 + "-Ordinateur" + (2)));
+      equipe2.ajouterJoueur(Joueur.ordinateur(nomEquipe2 + "-Ordinateur" + (2)));
     }
 
     var partie = new Partie(new AffichageEvenements(joueurHumain));
