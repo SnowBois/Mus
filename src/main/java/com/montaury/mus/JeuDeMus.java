@@ -17,10 +17,10 @@ public class JeuDeMus {
     System.out.print("Entrez votre nom : ");
     var nomJoueur = new Scanner(System.in).nextLine();
 
-    System.out.print("Entrez votre nom d'équipe : ");
+    System.out.print("Entrez votre nom d'equipe : ");
     var nomEquipe1 = new Scanner(System.in).nextLine();
 
-    // On préfixe le nom choisi pour le joueur par le nom de son équipe suivi d'un tirer
+    // On préfixe le nom choisi pour le joueur par le nom de son équipe suivi d'un tiret
     nomJoueur = nomEquipe1 + "-" + nomJoueur;
     var joueurHumain = Joueur.humain(nomJoueur);
 

@@ -31,7 +31,15 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Hordago());
     var joueurZaku = unJoueurFaisantChoix(new Kanta());
 
-    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
+    var equipe1 = new Equipe();
+    var equipe2 = new Equipe();
+
+    equipe1.ajouterJoueur(joueurEsku);
+    equipe2.ajouterJoueur(joueurZaku);
+
+    var opposants = new Opposants(equipe1, equipe2);
+
+    var resultat = manche.jouer(opposants);
 
     assertThat(resultat.vainqueur()).isNotNull();
     assertThat(resultat.pointsVaincu()).isZero();
@@ -42,9 +50,17 @@ class MancheTest {
     var joueurEsku = unJoueurFaisantChoix(new Mintza(), new Imido(), new Gehiago(2));
     var joueurZaku = unJoueurFaisantChoix(new Gehiago(40), new Tira());
 
-    var resultat = manche.jouer(new Opposants(joueurEsku, joueurZaku));
+    var equipe1 = new Equipe();
+    var equipe2 = new Equipe();
 
-    assertThat(resultat.vainqueur()).isEqualTo(joueurEsku);
+    equipe1.ajouterJoueur(joueurEsku);
+    equipe2.ajouterJoueur(joueurZaku);
+
+    var opposants = new Opposants(equipe1, equipe2);
+
+    var resultat = manche.jouer(opposants);
+
+    assertThat(resultat.vainqueur()).isEqualTo(equipe1);
     assertThat(resultat.pointsVaincu()).isZero();
   }
 
